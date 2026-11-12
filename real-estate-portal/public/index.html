@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domownik · Flats for sale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top" id="top"></header>
+  <main>
+    <section id="view-search">
+      <div class="layout">
+        <form class="filters" id="filters" aria-label="Filters">
+          <label>Search text<input type="text" name="q" placeholder="e.g. balkon, Kazimierz, ul. Dietla"></label>
+          <label>City<select name="city"><option value="">All cities</option></select></label>
+          <div class="row2">
+            <label>Min m²<input type="number" name="minArea" min="0" inputmode="numeric"></label>
+            <label>Max m²<input type="number" name="maxArea" min="0" inputmode="numeric"></label>
+          </div>
+          <div class="row2">
+            <label>Min price (zł)<input type="number" name="minPrice" min="0" step="10000" inputmode="numeric"></label>
+            <label>Max price (zł)<input type="number" name="maxPrice" min="0" step="10000" inputmode="numeric"></label>
+          </div>
+          <label>Rooms
+            <select name="rooms"><option value="">Any</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select>
+          </label>
+          <div class="checks">
+            <label><input type="checkbox" name="hasBalcony" value="1"> Balcony / terrace</label>
+            <label><input type="checkbox" name="hasElevator" value="1"> Elevator</label>
+            <label><input type="checkbox" name="hasParking" value="1"> Parking</label>
+          </div>
+          <button class="btn" type="submit">Show offers</button>
+          <button class="btn ghost" type="button" id="reset">Clear filters</button>
+        </form>
+        <div>
+          <div class="bar">
+            <h1 id="count" aria-live="polite">Flats for sale</h1>
+            <label>Sort <select id="sort">
+              <option value="best">Best quality first</option>
+              <option value="newest">Newest</option>
+              <option value="price_asc">Price: low to high</option>
+              <option value="price_desc">Price: high to low</option>
+              <option value="ppm_asc">Price per m²: low to high</option>
+              <option value="area_desc">Largest first</option>
+            </select></label>
+          </div>
+          <div class="grid" id="results"></div>
+          <nav class="pager" id="pager" aria-label="Pagination"></nav>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-ask" hidden>
+      <div class="ask">
+        <h1>Describe the flat you want</h1>
+        <p>Write it the way you would say it. Size, city, budget, "nice" or "cheap": we turn it into filters and show why each offer was ranked.</p>
+        <form class="askbox" id="askform">
+          <input id="askinput" type="text" maxlength="300" placeholder="I want a nice, cheap flat, 40m in Kraków" aria-label="Describe the flat you want">
+          <button class="btn" type="submit">Find flats</button>
+        </form>
+        <div class="chips" id="chips"></div>
+        <div id="interp"></div>
+      </div>
+      <div class="grid" id="askresults"></div>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
